@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:malik_matka/main.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class MyLogin extends StatefulWidget {
 
 class _MyLoginState extends State<MyLogin> {
   final formkey = GlobalKey<FormState>();
+  final snackBar = GlobalKey<FormState>();
   String name="";
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class _MyLoginState extends State<MyLogin> {
                   labelText: "Enter Mobile Number"
                 ),
                 validator: (value){
-                  if(value!.isEmpty ||RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]+$').hasMatch(value)){
+                  if(value!.isEmpty ||RegExp(r'^[0-9]{0-10}+$').hasMatch(value)){
                     return "Enter Correct Mobile Number";
                   }else{
                     return null;
@@ -66,15 +70,18 @@ class _MyLoginState extends State<MyLogin> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Sign up",style: TextStyle(fontSize: 22,color: Colors.black),),
-                  ElevatedButton(onPressed: (){
-
+                  NeumorphicButton(
+                    margin: EdgeInsets.only(top: 12),
+                    onPressed: (){
                     if(formkey.currentState!.validate()){
 
                       final snackBar = SnackBar(content: Text("Submitting form"));
                     }
-                    Navigator.pushNamed(context, 'home');
-      },child: Icon (Iconsax.arrow_right),
-
+                    },
+                    style: NeumorphicStyle(
+                      shape: NeumorphicShape.flat,
+                      boxShape: NeumorphicBoxShape.circle(),
+                    ),
                   )
                 ],
               )
