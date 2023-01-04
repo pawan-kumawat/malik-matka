@@ -1,90 +1,115 @@
 
-
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:malik_matka/main.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:malik_matka/components/my_button.dart';
+import 'package:malik_matka/components/my_textfield.dart';
+import 'package:malik_matka/components/square_tile.dart';
 
+class MyLogin extends StatelessWidget {
+  MyLogin({Key? key}) : super(key: key);
 
-class MyLogin extends StatefulWidget {
-  const MyLogin({Key? key}) : super(key: key);
+  final usernamecontroller =TextEditingController();
+  final passwordcontroller =TextEditingController();
 
-  @override
-  State<MyLogin> createState() => _MyLoginState();
-}
-
-class _MyLoginState extends State<MyLogin> {
-  final formkey = GlobalKey<FormState>();
-  final snackBar = GlobalKey<FormState>();
-  String name="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      backgroundColor: Color(0xFFffffff),
-      body: Container(
-        padding: const EdgeInsets.only(left: 40,right: 40),
-        child: Form(
-          key: formkey, 
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height:4),
-              Text("Welcome",style: TextStyle(fontSize: 40,color: Colors.black,fontWeight: FontWeight.bold),),
-              Text("Back !",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.bold),),
-              SizedBox(height: 40,),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Enter Mobile Number"
-                ),
-                validator: (value){
-                  if(value!.isEmpty ||RegExp(r'^[0-9]{0-10}+$').hasMatch(value)){
-                    return "Enter Correct Mobile Number";
-                  }else{
-                    return null;
-                  }
-                },
-              ),
-              SizedBox(height: 30,),
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: "Password"
-                ),
-                validator: (value){
-                  if(value!.isEmpty ||RegExp(r'^[a-z A-Z 1-10 @ # $ & * ?]+$').hasMatch(value)){
-                    return "Incorrect Password";
-                  }else{
-                    return null;
-                  }
-                },
+              const SizedBox(height: 40,),
+              //logo
+              const Icon(Icons.lock,
+                size: 100,
               ),
 
-              SizedBox(
-                height: 30,
+              const SizedBox(height: 50,),
+
+              //welcome back you've been missed!
+              Text('Welcome Back you\'ve been missed!',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 16,
+                ),
               ),
+
+              const SizedBox(height: 25,),
+
+              //username textfield
+              MyTextField(
+                controller: usernamecontroller,
+                hintText: 'username',
+                obscureText: false,
+              ),
+              const SizedBox(height: 25,),
+
+              //password textfield
+              MyTextField(
+                controller: passwordcontroller,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+
+              SizedBox(height: 10,),
+              //forgot password button
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text('Forgot Password?',style: TextStyle(color: Colors.grey.shade600),),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 25,),
+              //Sign in button
+              MyButton(
+                onTap: ()=>Navigator.pushNamed(context, 'home'),
+              ),
+              const SizedBox(height: 25,),
+              //or continue to
+             Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 25.0),
+               child: Row(
+                 children: [
+                   Expanded(child:
+                   Divider(
+                     thickness:0.5,
+                     color: Colors.grey.shade400,
+                   )
+                   ),
+
+                   Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                     child: Text('Or Continue With',
+                     style: TextStyle(color: Colors.grey.shade700),),
+                   ),
+
+                   Expanded(child:
+                   Divider(
+                     thickness:0.5,
+                     color: Colors.grey.shade400,
+                   )
+                   )
+                 ],
+               ),
+             ),
+
+
+              //google  button
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Sign up",style: TextStyle(fontSize: 22,color: Colors.black),),
-                  NeumorphicButton(
-                    margin: EdgeInsets.only(top: 12),
-                    onPressed: (){
-                    if(formkey.currentState!.validate()){
+                  //google button
+                  SquareTile(imagePath: 'assets/google.png',),
 
-                      final snackBar = SnackBar(content: Text("Submitting form"));
-                    }
-                    },
-                    style: NeumorphicStyle(
-                      shape: NeumorphicShape.flat,
-                      boxShape: NeumorphicBoxShape.circle(),
-                    ),
-                  )
-                ],
+
+                  //apple button
+                  SquareTile(imagePath: 'assets/appple.png',)
+                  ]
               )
+
+              //not a member?Register Now
 
             ],
           ),
@@ -93,3 +118,5 @@ class _MyLoginState extends State<MyLogin> {
     );
   }
 }
+
+
