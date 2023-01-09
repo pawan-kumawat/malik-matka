@@ -53,7 +53,7 @@ class NavBar extends StatelessWidget {
            leading:const Icon(CupertinoIcons.chart_bar_square_fill) ,
            title:const Text('Markets Rates'),
            iconColor: Colors.purpleAccent,
-           onTap: ()=>null,
+           onTap: ()=>Navigator.pushNamed(context, 'rates'),
          ), ListTile(
            leading:const Icon(Icons.help) ,
            title:const Text('Help and Guide'),

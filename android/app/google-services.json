@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "96300900088",
+    "project_id": "malikmatka-a5ccb",
+    "storage_bucket": "malikmatka-a5ccb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96300900088:android:b292db12fa1fb2edf3650d",
+        "android_client_info": {
+          "package_name": "com.example.malik_matka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96300900088-jss2mksqu4jpotkv9s1qhocb8jlfp3d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD67VW_rQCoiyikNT6qgORhmHM2I9lnh0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96300900088-jss2mksqu4jpotkv9s1qhocb8jlfp3d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

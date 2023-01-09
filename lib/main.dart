@@ -3,10 +3,16 @@ import 'package:malik_matka/ForgotPassword.dart';
 import 'package:malik_matka/HomePage.dart';
 import 'package:malik_matka/Register.dart';
 import 'package:malik_matka/login.dart';
+import 'package:malik_matka/main_page.dart';
+import 'package:malik_matka/marketRates.dart';
 import 'package:malik_matka/payment.dart';
 import 'package:malik_matka/wallet.dart';
-void main() {
-  runApp( MyApp());
+import 'package:firebase_core/firebase_core.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
+  runApp(  MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
+      home: MainPage(),
       routes: {
         'login':(context)=>MyLogin(),
         'register':(context)=>MyRegister(),
@@ -23,6 +29,7 @@ class MyApp extends StatelessWidget {
         'wallet':(context)=>MyWallet(),
         'password':(context)=>ForgotPassword(),
         'payment':(context)=>MyPayment(),
+        'rates':(context)=>MarketRates(),
       },
     );
   }
