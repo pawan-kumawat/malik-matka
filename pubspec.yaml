@@ -40,6 +40,7 @@ dependencies:
   fl_chart: ^0.41.0
   google_fonts: ^2.3.1
   firebase_auth: ^3.3.14
+  url_launcher:
 
 
  #firebase Database

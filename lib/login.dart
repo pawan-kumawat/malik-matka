@@ -1,10 +1,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:malik_matka/components/my_textfield.dart';
 import 'package:malik_matka/components/square_tile.dart';
-import '';
+
 
 class MyLogin extends StatefulWidget {
   MyLogin({Key? key}) : super(key: key);
@@ -91,7 +90,7 @@ void dispose(){
                    Padding(
                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
                      child: GestureDetector(
-                       onTap: ()=>Navigator.pushNamed(context, 'home'),
+                       onTap: ()=>signIn(),
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(

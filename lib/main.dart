@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:malik_matka/ForgotPassword.dart';
+import 'package:malik_matka/Help_And_Guide.dart';
 import 'package:malik_matka/HomePage.dart';
 import 'package:malik_matka/Register.dart';
 import 'package:malik_matka/login.dart';
 import 'package:malik_matka/main_page.dart';
 import 'package:malik_matka/marketRates.dart';
 import 'package:malik_matka/payment.dart';
+import 'package:malik_matka/share_our_app.dart';
 import 'package:malik_matka/wallet.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() async{
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
-  runApp(  MyApp());
+  await Firebase.initializeApp();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -23,15 +27,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MainPage(),
       routes: {
-        'login':(context)=>MyLogin(),
-        'register':(context)=>MyRegister(),
-        'home':(context)=>MyHomePage(),
-        'wallet':(context)=>MyWallet(),
-        'password':(context)=>ForgotPassword(),
-        'payment':(context)=>MyPayment(),
-        'rates':(context)=>MarketRates(),
+        'login': (context) => MyLogin(),
+        'register': (context) => MyRegister(),
+        'home': (context) => MyHomePage(),
+        'wallet': (context) => MyWallet(),
+        'password': (context) => ForgotPassword(),
+        'payment': (context) => MyPayment(),
+        'rates': (context) => MarketRates(),
+        'share': (context) => MyShare(),
+        'help': (context) => MyHelp(),
       },
     );
   }
 }
+
+
 
