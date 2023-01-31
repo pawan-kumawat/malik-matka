@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:malik_matka/components/my_textfield.dart';
@@ -6,7 +5,7 @@ import 'package:malik_matka/components/square_tile.dart';
 
 
 class MyLogin extends StatefulWidget {
-  MyLogin({Key? key}) : super(key: key);
+  MyLogin({super.key});
 
   @override
   State<MyLogin> createState() => _MyLoginState();
@@ -16,20 +15,67 @@ class _MyLoginState extends State<MyLogin> {
   final _emailcontroller =TextEditingController();
   final _passwordcontroller =TextEditingController();
 
-Future signIn() async{
-  await FirebaseAuth.instance.
-  signInWithEmailAndPassword(
-      email: _emailcontroller.text.trim(),
-      password: _passwordcontroller.text.trim());
-}
 
-@override
-void dispose(){
-  _emailcontroller.dispose();
-  _passwordcontroller.dispose( );
-  super.dispose( );
-}
 
+  void signIn() async{
+
+    //show loading circle
+    showDialog(
+      context: context,
+      builder:(context){
+      return const Center(child: CircularProgressIndicator(),);
+    },
+    );
+
+
+    //try sign in
+ try{
+   await FirebaseAuth.instance.
+   signInWithEmailAndPassword(
+       email: _emailcontroller.text.trim(),
+       password: _passwordcontroller.text.trim(),
+   );
+
+   //pop the loading circle
+       Navigator.pop(context);
+ }
+
+ on FirebaseAuthException catch (e) {
+   //pop the loading circle
+   Navigator.pop(context);
+ //wrong email
+   if(e.code == "user-not-found!"){
+     //show error to user
+     wrongEmailMessage();
+   }
+
+   //wrong password
+   else if(e.code == 'wrong-password'){
+     //show error to user
+     wrongPasswordMessage();
+    }
+ }
+}
+//wrong email message popup
+  void wrongEmailMessage(){
+    showDialog(context: context, builder: (context){
+      return
+      AlertDialog
+        (
+        title: Text("Incorrect Email"),
+      );
+    });
+  }
+
+  void wrongPasswordMessage(){
+    showDialog(context: context, builder: (context){
+      return
+      AlertDialog
+        (
+        title: Text("Incorrect Password"),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

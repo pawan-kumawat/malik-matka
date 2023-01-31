@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+   NavBar({Key? key}) : super(key: key);
+  final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -11,26 +13,8 @@ class NavBar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: const Text('Pawan'),
-            accountEmail: const Text('Example@gmail.com'),
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image.network(
-                  'https://avatars.githubusercontent.com/u/109915881?s=400&u=fcee72ac83b747ab295aa9225afa87c79896cb0e&v=4',
-                  width: 90,
-                  height: 90,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              image: DecorationImage(
-                image: NetworkImage(
-                    'https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171__480.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
+            accountName: const Text(''),
+            accountEmail: Text(user.email!),
           ),
           ListTile(
             leading: const Icon(Icons.wallet),
@@ -84,7 +68,10 @@ class NavBar extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Logout'),
             iconColor: CupertinoColors.systemIndigo,
-            onTap: () => Navigator.pushNamed(context, 'login'),
+            onTap: (){
+              FirebaseAuth.instance.signOut();
+
+            } ,
           ),
         ],
       ),

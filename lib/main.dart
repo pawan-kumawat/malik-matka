@@ -10,7 +10,6 @@ import 'package:malik_matka/payment.dart';
 import 'package:malik_matka/share_our_app.dart';
 import 'package:malik_matka/wallet.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_core_web/firebase_core_web.dart';
 
 
 void main() async {
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       home: MainPage(),
       routes: {
         'login': (context) => MyLogin(),

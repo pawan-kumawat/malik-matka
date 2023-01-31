@@ -59,7 +59,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Full Name",
+                                hintText: "Email",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -83,7 +83,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Email",
+                                hintText: "Password",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -108,7 +108,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Password",
+                                hintText: " Confirm Password",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
